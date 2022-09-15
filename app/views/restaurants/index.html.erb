@@ -5,7 +5,7 @@
       <div class="card">
         <img src="https://as1.ftcdn.net/v2/jpg/00/91/34/54/1000_F_91345400_OF1osMse5Gjwa3f5VewitCgr1N4xJgFX.jpg" class="card-img-top" alt="SIN IMAGEN">
           <div class="card-body">
-            <p class="card-title"><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
+            <p class="card-title"><%= link_to restaurant.name, restaurant_path(restaurant), class: "link" %></p>
             <span class="badge text-white bg-warning"><%= restaurant.category.capitalize%></span>
               <p class="card-text"><i class="fa-solid fa-location-dot"></i>  <%= restaurant.address%></p>
               <p class="card-text"><i class="fa-solid fa-phone"></i>  <%= restaurant.phone_number%></p>

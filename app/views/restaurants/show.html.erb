@@ -1,6 +1,6 @@
 <hr>
 <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
+  <div class="row g-2">
     <div class="col-md-4">
       <img src="https://as1.ftcdn.net/v2/jpg/00/91/34/54/1000_F_91345400_OF1osMse5Gjwa3f5VewitCgr1N4xJgFX.jpg" class="img-fluid rounded-start" alt="...">
     </div>
@@ -10,20 +10,24 @@
         <p class="card-text"><i class="fa-solid fa-location-dot"></i>  <%= @restaurant.address %></p>
         <p class="card-text"><%= @restaurant.category%></p>
         <p class="card-text"><i class="fa-solid fa-phone"></i>  <%= @restaurant.phone_number%></p>
-        <p class="card-text"> <h5>Review:</h5> <% @restaurant.reviews.each do |review| %>
+        <%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant), class: "btn btn-dark" %>
+        <%= link_to "Delete Restaurant", restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-warning" %>
+      </div>
+    </div>
+       </div>
+      <div class = "container" class="col-md-6">
+      <%= link_to "New Review", new_restaurant_review_path(@restaurant), class: "btn btn-lg btn-info"%>
+        <p class="card-text"> <h5>All Reviews:</h5> <% @restaurant.reviews.each do |review| %>
         <p class="card-text"><% review.rating.times do %> <i class="fa-solid fa-star"></i><% end %></p>
         <p class="list-group-item"><%= review.content %></p>
         <small><p><%= link_to "Delete",
           review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-info"
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-info"
         %></p></small>
       </p>
 </p>
   <% end %>
      </div>
-    </div>
-  </div>
+
+
 </div>
-<%= link_to "new", new_restaurant_review_path(@restaurant) %>
-<%= link_to "edit", edit_restaurant_path(@restaurant) %>
-<%= link_to "delete", restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-info" %>
